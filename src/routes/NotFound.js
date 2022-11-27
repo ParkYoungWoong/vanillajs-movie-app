@@ -1,6 +1,6 @@
 import { Component } from '../core/heropy'
 
-export default class Headline extends Component {
+export default class NotFound extends Component {
   render() {
     this.el.classList.add('container', 'not-found')
     this.el.innerHTML = /* html */`

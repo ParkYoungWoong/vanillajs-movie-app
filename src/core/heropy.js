@@ -38,9 +38,7 @@ function routeRender(routes) {
   // 2) 현재 라우트 정보를 찾아서 렌더링!
   const currentRoute = routes.find(route => new RegExp(`${route.path}/?$`).test(hash))
   routerView.innerHTML = ''
-  if (currentRoute) {
-    routerView.append(new currentRoute.component().el)
-  }
+  routerView.append(new currentRoute.component().el)
 }
 export function createRouter(routes) {
   // 원하는(필요한) 곳에서 호출할 수 있도록 함수 데이터를 반환!

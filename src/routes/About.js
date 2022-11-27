@@ -1,7 +1,7 @@
 import { Component } from '../core/heropy'
 import aboutStore from '../store/about'
 
-export default class Home extends Component {
+export default class About extends Component {
   render() {
     const { name, email, blog, github, image } = aboutStore.state
 
