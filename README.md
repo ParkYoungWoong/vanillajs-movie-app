@@ -1,7 +1,7 @@
 # VanillaJS Movie App
 
 OMDb API를 활용해 VanillaJS 영화 검색 애플리케이션을 만들어봅니다.  
-이 프로젝트는 [JS 버전]()과 [TS 버전]()으로 나누어져 있습니다.  
+이 프로젝트는 [JS 버전](/tree/js)과 [TS 버전](/tree/main)으로 나누어져 있습니다.  
 기본 버전은 TS입니다.
 
 [DEMO]()
@@ -18,20 +18,24 @@ OMDb API를 활용해 VanillaJS 영화 검색 애플리케이션을 만들어봅
 
 ### Google Fonts
 
-[Oswald](), [Roboto]() 폰트를 사용합니다.
+[Oswald](https://fonts.google.com/specimen/Oswald?query=oswa), [Roboto](https://fonts.google.com/specimen/Roboto?query=robo) 폰트를 사용합니다.
 
 ```html
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 ```
 
-## Vercel with Serverless Functions
+## Vercel
 
 ```bash
 $ npm i -D vercel dotenv node-fetch
 ```
 
-__/.env__ 파일을 만들고 개발용 서버에서 사용할 환경변수를 지정합니다.  
+### 환경변수
+
+개발용 서버에서 사용할 환경변수를 지정합니다.  
 이후 Vercel 서비스에 배포할 때는 프로젝트의 __'Settings / Environment Variables'__ 옵션에서 환경변수를 지정해야 합니다!
+
+__/.env__
 
 ```dotenv
 APIKEY=<MY_OMDb_API_KEY>
@@ -39,7 +43,11 @@ APIKEY=<MY_OMDb_API_KEY>
 
 ![Screenshot](/screenshots/screenshot_vercel_environment.JPG)
 
-__/vercel.json__ 파일을 만들고 Vercel 서비스에 배포할 구성 옵션을 지정합니다.
+### Vercel 구성 옵션
+
+Vercel 서비스에 배포할 구성 옵션을 지정합니다.
+
+__/vercel.json__
 
 ```json
 {
@@ -48,7 +56,11 @@ __/vercel.json__ 파일을 만들고 Vercel 서비스에 배포할 구성 옵션
 }
 ```
 
-__/api/movie.js__ 파일을 만들고 서버리스 함수를 작성합니다.
+### 서버리스 함수
+
+APIKEY를 노출하지 않도록 서버리스 함수를 작성합니다.
+
+__/api/movie.js__
 
 ```js
 import fetch from 'node-fetch'
