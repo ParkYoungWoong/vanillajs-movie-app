@@ -1,10 +1,10 @@
 # VanillaJS Movie App
 
 OMDb API를 활용해 VanillaJS 영화 검색 애플리케이션을 만들어봅니다.  
-이 프로젝트는 [JS 버전](/tree/js)과 [TS 버전](/tree/main)으로 나누어져 있습니다.  
+이 프로젝트는 [JS 버전](/tree/js-only)과 [TS 버전](/tree/main)으로 나누어져 있습니다.  
 기본 버전은 TS입니다.
 
-[DEMO]()
+[DEMO](https://vanilla-movie-5znvu8s4t-parkyoungwoong.vercel.app/#/)
 
 ![Screenshot](/screenshots/screenshot_demo.JPG)
 
