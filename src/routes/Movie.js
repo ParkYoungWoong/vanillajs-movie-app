@@ -4,8 +4,16 @@ import movieStore, { getMovieDetails } from '../store/movie'
 export default class Movie extends Component {
   async render() {
     this.el.classList.add('container', 'the-movie')
-    this.el.innerHTML = '<div class="the-loader"></div>'
-    
+    // 스켈레톤 UI 출력!
+    this.el.innerHTML = /* html */ `
+      <div class="poster skeleton"></div>
+      <div class="specs">
+        <div class="title skeleton"></div>
+        <div class="labels skeleton"></div>
+        <div class="plot skeleton"></div>
+      </div>
+    `
+    // 영화 상세 정보 가져오기!
     await getMovieDetails(history.state.id)
     const { movie } = movieStore.state
     const bigPoster = movie.Poster.replace('SX300', 'SX700')
@@ -14,7 +22,7 @@ export default class Movie extends Component {
         style="background-image: url(${bigPoster});"
         class="poster">
       </div>
-      <div>
+      <div class="specs">
         <div class="title">
           ${movie.Title}
         </div>
