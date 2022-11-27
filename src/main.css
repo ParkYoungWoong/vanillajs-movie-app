@@ -1,18 +1,15 @@
 /* Common */
 html {
   --color--black: #0E111B;
-  --color--black-90: rgba(--color--black, .9);
-  --color--black-50: rgba(--color--black, .5);
   --color--white: #FFF;
-  --color--white-60: rgba(255,255,255,.6);
   --color--white-50: rgba(255,255,255,.5);
   --color--white-30: rgba(255,255,255,.3);
+  --color--white-20: rgba(255,255,255,.2);
   --color--white-10: rgba(255,255,255,.1);
   --color--white-5: rgba(255,255,255,.05);
   --color--primary: #FDC000;
   --color--hover: #F86A05;
   --color--area: #1C212E;
-  --color--header: rgba(14,17,27,0.9)
 }
 body {
   background-color: var(--color--black);
@@ -49,7 +46,7 @@ body {
 }
 
 
-/* Loading Animation */
+/* Default Loading Animation */
 .the-loader {
   width: 30px;
   height: 30px;
@@ -68,21 +65,49 @@ body {
 }
 
 
+/* Skeleton Loading Animation */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: var(--color--area);
+}
+.skeleton::after {
+  content: "";  
+  background-image: linear-gradient(270deg, 
+    rgba(255,255,255,0),
+    rgba(255,255,255,.1),
+    rgba(255,255,255,0)
+  );
+  transform: translateX(-100%);
+  animation: skeleton-loader 2s infinite;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+@keyframes skeleton-loader {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+
 /* Container */
 .container {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 40px 0 60px;
+  padding: 40px 0;
   position: relative;
 }
 @media (max-width: 1200px) {
   .container {
-    padding: 40px 40px 60px;
+    padding: 40px 40px;
   }
 }
 @media (max-width: 600px) {
   .container {
-    padding: 40px 20px 60px;
+    padding: 40px 20px;
   }
 }
 
@@ -90,7 +115,7 @@ body {
 /* components/TheHeader */
 header {
   padding: 20px 40px;
-  background-color: var(--color--header);
+  background-color: rgba(14,17,27,0.9);
   position: sticky;
   top: 0;
   z-index: 9;
@@ -150,6 +175,20 @@ header .user img {
   header .user {
     right: 20px;
   }
+}
+
+
+/* components/TheFooter */
+footer {
+  padding: 40px 40px 60px;
+  text-align: center;
+}
+footer a {
+  color: var(--color--white-20);
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
 }
 
 
@@ -293,6 +332,9 @@ header .user img {
   position: relative;
   background-color: var(--color--area);
 }
+.the-movie .specs {
+  flex-grow: 1;
+}
 .the-movie .title {
   font-family: "Oswald", sans-serif;
   font-size: 70px;
@@ -300,9 +342,19 @@ header .user img {
   color: var(--color--white);
   margin-bottom: 30px;
 }
+.the-movie .title.skeleton {
+  height: 70px;
+}
 .the-movie .labels {
   color: var(--color--primary);
   margin-bottom: 20px;
+}
+.the-movie .labels.skeleton {
+  height: 30px;
+}
+.the-movie .plot.skeleton {
+  width: 80%;
+  height: 400px;
 }
 .the-movie h3 {
   font-family: "Oswald", sans-serif;
