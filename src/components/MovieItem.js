@@ -1,14 +1,7 @@
-import { Component, ComponentPayload } from '../core/heropy'
-import { SimpleMovie } from '../store/movie'
-
-interface Props {
-  [key: string]: unknown
-  movie: SimpleMovie
-}
+import { Component } from '../core/heropy'
 
 export default class MovieItem extends Component {
-  public props = {} as Props
-  constructor(payload: ComponentPayload) {
+  constructor(payload) {
     super({
       ...payload,
       tagName: 'a'
