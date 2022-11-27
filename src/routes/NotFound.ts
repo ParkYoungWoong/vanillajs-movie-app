@@ -5,8 +5,8 @@ export default class Headline extends Component {
     this.el.classList.add('container', 'not-found')
     this.el.innerHTML = /* html */`
       <h1>
-        404 Error!<br />
-        Page Not Found!
+        Sorry..<br />
+        Page Not Found.
       </h1>
     `
   }

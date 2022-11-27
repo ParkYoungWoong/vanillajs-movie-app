@@ -16,9 +16,9 @@ html {
 }
 body {
   background-color: var(--color--black);
-  color: var(--color--white);
-  line-height: 1.4;
   font-family: 'Roboto', sans-serif;
+  line-height: 1.4;
+  color: var(--color--white);
 }
 
 
@@ -96,6 +96,7 @@ header {
   z-index: 9;
   display: flex;
   align-items: flex-end;
+  gap: 40px;
 }
 header .logo {
   display: block;
@@ -107,17 +108,9 @@ header .logo {
 header .logo span {
   color: var(--color--primary);
 }
-header nav {
-  margin-left: 40px;
-}
 header nav ul {
   display: flex;
-}
-header nav ul li {
-  margin-left: 10px;
-}
-header nav ul li:first-child {
-  margin-left: 0;
+  gap: 14px;
 }
 header nav ul li a {
   font-size: 14px;
@@ -125,10 +118,12 @@ header nav ul li a {
   color: var(--color--white-50);
   text-decoration: none;
 }
+header nav ul li a.active {
+  color: var(--color--primary);
+}
 header .user {
   width: 40px;
   height: 40px;
-  box-sizing: border-box;
   border-radius: 50%;
   background-color: var(--color--area);
   cursor: pointer;
@@ -145,9 +140,6 @@ header .user:hover {
 header .user img {
   width: 100%;
 }
-header a.active {
-  color: var(--color--primary);
-}
 @media (max-width: 600px) {
   header {
     padding: 14px 20px;
@@ -162,16 +154,19 @@ header a.active {
 
 
 /* components/Headline */
+.headline {
+  margin-bottom: 40px;
+}
 .headline h1 {
-  line-height: 1;
   font-family: 'Oswald', sans-serif;
   font-size: 80px;
+  line-height: 1;
+  margin-bottom: 40px;
 }
 .headline h1 span {
   color: var(--color--primary);
 }
 .headline p {
-  margin: 40px 0;
   color: var(--color--white-30);
 }
 @media (max-width: 600px) {
@@ -185,10 +180,11 @@ header a.active {
 .search {
   display: flex;
   gap: 10px;
-  height: 50px;
+  margin-bottom: 30px;
 }
 .search input {
   flex-grow: 1;
+  height: 50px;
   padding: 0 20px;
   border-radius: 4px;
   border: none;
@@ -208,13 +204,9 @@ header a.active {
 
 /* components/MovieList */
 .movie-list {
-  margin-top: 30px;
   padding: 20px;
-  background-color: var(--color--area);
   border-radius: 4px;
-}
-.movie-list.no-result {
-  padding: 70px 0;
+  background-color: var(--color--area);
 }
 .movie-list .message {
   color: var(--color--primary);
@@ -262,13 +254,13 @@ header a.active {
   border: 6px solid var(--color--primary);
 }
 .movies .movie .info {
-  background-color: rgba(14, 17, 27, 0.3);
+  background-color: rgba(14,17,27,.3);
   backdrop-filter: blur(10px);
   width: 100%;
   padding: 14px;
+  box-sizing: border-box;
   font-size: 14px;
   text-align: center;
-  box-sizing: border-box;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -278,15 +270,15 @@ header a.active {
 }
 .movies .movie .info .title {
   color: var(--color--white);
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 
 /* routes/Movie */
 .the-movie {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--color--white-50);
   display: flex;
   gap: 70px;
 }
@@ -304,8 +296,8 @@ header a.active {
 .the-movie .title {
   font-family: "Oswald", sans-serif;
   font-size: 70px;
-  color: var(--color--white);
   line-height: 1;
+  color: var(--color--white);
   margin-bottom: 30px;
 }
 .the-movie .labels {
@@ -313,10 +305,10 @@ header a.active {
   margin-bottom: 20px;
 }
 .the-movie h3 {
-  color: var(--color--white);
-  margin: 24px 0 6px;
   font-family: "Oswald", sans-serif;
   font-size: 20px;
+  color: var(--color--white);
+  margin: 24px 0 6px;
 }
 @media all and (max-width: 1200px) {
   .the-movie {
@@ -331,34 +323,32 @@ header a.active {
     display: block;
   }
   .the-movie .title {
-    margin-top: 50px;
     font-size: 50px;
+    margin-top: 50px;
   }
 }
 
 /* routes/About */
 .about .photo {
-  flex-shrink: 0;
-  width: 250px;
-  height: 250px;
+  width: 230px;
+  height: 230px;
   margin: 0 auto 20px;
   border-radius: 50%;
-  box-sizing: border-box;
   background-color: var(--color--area);
-  border: 12px solid var(--color--black);
   overflow: hidden;
 }
 .about .photo img {
   width: 100%;
 }
 .about .name {
-  font-size: 40px;
   font-family: "Oswald", sans-serif;
+  font-size: 40px;
   margin-bottom: 20px;
 }
 .about p {
   line-height: 1.5;
   text-align: center;
+  margin-bottom: 4px;
 }
 .about a {
   color: var(--color--primary);
@@ -373,5 +363,6 @@ header a.active {
 .not-found h1 {
   font-size: 70px;
   font-weight: 700;
+  color: var(--color--white-10);
   text-align: center;
 }

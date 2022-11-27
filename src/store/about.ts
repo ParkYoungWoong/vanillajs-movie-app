@@ -1,10 +1,10 @@
 import { Store } from '../core/heropy'
 
 interface State {
-  [key: string]: unknown
   name: string
   email: string
   blog: string
+  github: string
   image: string
 }
 

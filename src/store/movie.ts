@@ -53,7 +53,7 @@ const store = new Store<State>({
   page: 1,
   pageMax: 1,
   movies,
-  message: '',
+  message: 'Search for the movie title!',
   movie,
   loading: false,
 })
