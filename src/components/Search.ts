@@ -8,13 +8,6 @@ interface State {
 
 export default class Search extends Component {
   public state = {} as State
-  constructor() {
-    super({
-      state: {
-        title: ''
-      }
-    })
-  }
   render() {
     this.el.classList.add('search')
     this.el.innerHTML = /* html */ `

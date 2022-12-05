@@ -47,11 +47,13 @@ function routeRender(routes: Routes) {
   const [hash, queryString = ''] = location.hash.split('?') // 물음표를 기준으로 해시 정보와 쿼리스트링을 구분
 
   // 1) 쿼리스트링을 객체로 변환해 히스토리의 상태에 저장!
-  const query = queryString.split('&').reduce((acc, cur) => {
-    const [key, value] = cur.split('=')
-    acc[key] = value
-    return acc
-  }, {} as { [key: string]: string })
+  const query = queryString
+    .split('&')
+    .reduce((acc, cur) => {
+      const [key, value] = cur.split('=')
+      acc[key] = value
+      return acc
+    }, {} as { [key: string]: string })
   history.replaceState(query, '') // (상태, 제목)
 
   // 2) 현재 라우트 정보를 찾아서 렌더링!
@@ -108,7 +110,7 @@ export class Store<S> {
     Array.isArray(this.observers[key]) // 이미 등록된 콜백이 있는지 확인!
       ? this.observers[key].push(cb) // 있으면 새로운 콜백 밀어넣기!
       : this.observers[key] = [cb] // 없으면 콜백 배열로 할당!
-  
+
     // 예시)
     // observers = {
     //   구독할상태이름: [실행할콜백1, 실행할콜백2]
