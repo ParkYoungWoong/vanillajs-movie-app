@@ -2,13 +2,6 @@ import { Component } from '../core/heropy'
 import movieStore, { searchMovies } from '../store/movie'
 
 export default class Search extends Component {
-  constructor() {
-    super({
-      state: {
-        title: ''
-      }
-    })
-  }
   render() {
     this.el.classList.add('search')
     this.el.innerHTML = /* html */ `

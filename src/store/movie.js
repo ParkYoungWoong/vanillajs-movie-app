@@ -9,7 +9,7 @@ const store = new Store({
   movies,
   message: 'Search for the movie title!',
   movie,
-  loading: false,
+  loading: false
 })
 
 export default store

@@ -1,4 +1,4 @@
-# VanillaJS Movie App
+# VanillaJS Movie App (JavaScript ver.)
 
 OMDb API를 활용해 VanillaJS 영화 검색 애플리케이션을 만들어봅니다.  
 이 프로젝트는 [JS 버전](https://github.com/ParkYoungWoong/vanillajs-movie-app/tree/js-only)과 [TS 버전](https://github.com/ParkYoungWoong/vanillajs-movie-app/tree/main)으로 나누어져 있습니다.  
@@ -22,6 +22,21 @@ OMDb API를 활용해 VanillaJS 영화 검색 애플리케이션을 만들어봅
 
 ```html
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+```
+
+### Headline.js HTML 
+
+```html
+<h1>
+  <span>OMDb API</span><br />
+  THE OPEN<br />
+  MOVIES DATABASE
+</h1>
+<p>
+  The OMDb API is a RESTful web service to obtain movie information,
+  all content and images on the site are contributed and maintained by our users.<br />
+  If you find this service useful, please consider making a one-time donation or become a patron.
+</p>
 ```
 
 ## Vercel
