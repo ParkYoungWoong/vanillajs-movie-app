@@ -18,10 +18,12 @@ OMDb API를 활용해 VanillaJS 영화 검색 애플리케이션을 만들어봅
 
 ### Google Fonts
 
-[Oswald](https://fonts.google.com/specimen/Oswald?query=oswa), [Roboto](https://fonts.google.com/specimen/Roboto?query=robo) 폰트를 사용합니다.
+[Roboto](https://fonts.google.com/specimen/Roboto?query=robo), [Oswald](https://fonts.google.com/specimen/Oswald?query=oswa) 폰트를 사용합니다.
 
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 ```
 
 ### Heropy.js
