@@ -41,8 +41,10 @@ OMDb API를 활용해 VanillaJS 영화 검색 애플리케이션을 만들어봅
 
 ## Vercel
 
+node-fetch 패키지는 꼭 2버전으로 설치해야 합니다!
+
 ```bash
-$ npm i -D vercel dotenv node-fetch
+$ npm i -D vercel dotenv node-fetch@2
 ```
 
 ### 환경변수
