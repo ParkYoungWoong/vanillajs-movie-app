@@ -26,7 +26,7 @@ OMDb API를 활용해 VanillaJS 영화 검색 애플리케이션을 만들어봅
 
 ### Heropy.js
 
-JS Component(+ Router, Store)를 활용합니다.  
+컴포넌트 파트에서 작성한 Heropy.js Component(+ Router, Store)를 활용합니다.  
 코드를 복사해서 프로젝트의 `/src/core/heropy.ts|js` 파일에 붙여넣고 시작하세요.  
 
 [heropy.ts 코드](https://github.com/ParkYoungWoong/vanillajs-movie-app/blob/main/src/core/heropy.ts)  
