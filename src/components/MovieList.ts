@@ -20,8 +20,8 @@ export default class MovieList extends Component {
 
     const moviesEl = this.el.querySelector('.movies')
     moviesEl?.append(
-      ...movieStore.state.movies.map(movie => new MovieItem({ 
-        props: { movie } 
+      ...movieStore.state.movies.map(movie => new MovieItem({
+        movie
       }).el)
     )
 

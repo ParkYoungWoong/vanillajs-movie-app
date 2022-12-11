@@ -1,4 +1,4 @@
-import { Component, ComponentPayload } from '../core/heropy'
+import { Component } from '../core/heropy'
 import { SimpleMovie } from '../store/movie'
 
 interface Props {
@@ -8,15 +8,15 @@ interface Props {
 
 export default class MovieItem extends Component {
   public props = {} as Props
-  constructor(payload: ComponentPayload) {
+  constructor(props: Props) {
     super({
-      ...payload,
+      props,
       tagName: 'a'
     })
   }
   render() {
     const { movie } = this.props
-    
+
     this.el.setAttribute('href', `#/movie?id=${movie.imdbID}`)
     this.el.classList.add('movie')
     this.el.style.backgroundImage = `url(${movie.Poster})`

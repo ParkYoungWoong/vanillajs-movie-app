@@ -1,5 +1,5 @@
 ///// Component /////
-export interface ComponentPayload {
+interface ComponentPayload {
   tagName?: string
   props?: {
     [key: string]: unknown
@@ -19,9 +19,9 @@ export class Component {
       props = {},
       state = {}
     } = payload
+    this.el = document.createElement(tagName)
     this.props = props
     this.state = state
-    this.el = document.createElement(tagName)
     this.render()
   }
   render() { // 컴포넌트를 렌더링하는 함수
@@ -43,24 +43,27 @@ function routeRender(routes: Routes) {
   if (!location.hash) {
     history.replaceState(null, '', '/#/') // (상태, 제목, 주소)
   }
-  const routerView = document.querySelector('router-view') as HTMLElement
+  const routerView = document.querySelector('router-view')
   const [hash, queryString = ''] = location.hash.split('?') // 물음표를 기준으로 해시 정보와 쿼리스트링을 구분
 
   // 1) 쿼리스트링을 객체로 변환해 히스토리의 상태에 저장!
+  interface Query {
+    [key: string]: string
+  }
   const query = queryString
     .split('&')
     .reduce((acc, cur) => {
       const [key, value] = cur.split('=')
       acc[key] = value
       return acc
-    }, {} as { [key: string]: string })
+    }, {} as Query)
   history.replaceState(query, '') // (상태, 제목)
 
   // 2) 현재 라우트 정보를 찾아서 렌더링!
   const currentRoute = routes.find(route => new RegExp(`${route.path}/?$`).test(hash))
-  routerView.innerHTML = ''
-  if (currentRoute) {
-    routerView.append(new currentRoute.component().el)
+  if (routerView) {
+    routerView.innerHTML = ''
+    currentRoute && routerView.append(new currentRoute.component().el)
   }
 
   // 3) 화면 출력 후 스크롤 위치 복구!
@@ -78,18 +81,17 @@ export function createRouter(routes: Routes) {
 
 
 ///// Store /////
-interface Callback {
+interface SubscribeCallback {
   (arg: unknown): void
+}
+interface StoreObservers {
+  [key: string]: SubscribeCallback[]
 }
 
 export class Store<S> {
-  public state
-  private observers
+  public state = {} as S // 상태(데이터)
+  private observers = {} as StoreObservers // 상태 변경 감지를 통해 실행할 콜백
   constructor(state: S) {
-    this.state = {} as S // 상태(데이터)
-    this.observers = {} as {
-      [key: string]: Callback[]
-    }
     for (const key in state) {
       // 각 상태에 대한 변경 감시(Setter) 설정!
       Object.defineProperty(this.state, key, {
@@ -106,7 +108,7 @@ export class Store<S> {
     }
   }
   // 상태 변경 구독!
-  subscribe(key: string, cb: Callback) {
+  subscribe(key: string, cb: SubscribeCallback) {
     Array.isArray(this.observers[key]) // 이미 등록된 콜백이 있는지 확인!
       ? this.observers[key].push(cb) // 있으면 새로운 콜백 밀어넣기!
       : this.observers[key] = [cb] // 없으면 콜백 배열로 할당!
