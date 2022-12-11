@@ -87,15 +87,16 @@ $ npm run vercel
 프로젝트 루트 경로에 `/api` 폴더를 생성하고,   
 API Key 를 노출하지 않도록 서버리스 함수를 작성합니다.
 
-__/api/movie.js__
+__/api/movie.ts__
 
 ```js
+import { VercelRequest, VercelResponse } from '@vercel/node'
 import fetch from 'node-fetch'
 
 const { APIKEY } = process.env
 
-export default async function handler(request, response) {
-  const { title, page, id } = JSON.parse(request.body)
+export default async function handler(request: VercelRequest, response: VercelResponse) {
+  const { title, page, id } = JSON.parse(request.body as string)
   const url = id
     ? `https://www.omdbapi.com/?apikey=${APIKEY}&i=${id}&plot=full`
     : `https://www.omdbapi.com/?apikey=${APIKEY}&s=${title}&page=${page}`
@@ -105,6 +106,7 @@ export default async function handler(request, response) {
     .status(200)
     .json(json)
 }
+
 ```
 
 ### 환경변수
