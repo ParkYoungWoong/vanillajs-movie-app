@@ -7,7 +7,7 @@ export default class Headline extends Component {
       <h1>
         <span>OMDb API</span><br />
         THE OPEN<br />
-        MOVIES DATABASE
+        MOVIE DATABASE
       </h1>
       <p>
         The OMDb API is a RESTful web service to obtain movie information,

@@ -1,25 +1,25 @@
 import { Store } from '../core/heropy'
 
-const movies = []
-const movie = {}
 const store = new Store({
   searchText: '',
   page: 1,
   pageMax: 1,
-  movies,
-  message: 'Search for the movie title!',
-  movie,
-  loading: false
+  movies: [],
+  movie: {},
+  loading: false,
+  message: 'Search for the movie title!'
 })
 
 export default store
 export const searchMovies = async page => {
   store.state.loading = true
+  store.state.page = page
   if (page === 1) {
     store.state.movies = []
     store.state.message = ''
   }
   try {
+    // const res = await fetch(`https://omdbapi.com?apikey=7035c60c&s=${store.state.searchText}&page=${page}`)
     const res = await fetch('/api/movie', {
       method: 'POST',
       body: JSON.stringify({
@@ -44,19 +44,16 @@ export const searchMovies = async page => {
   }
 }
 export const getMovieDetails = async id => {
-  store.state.loading = true
   try {
+    // const res = await fetch(`https://omdbapi.com?apikey=${APIKEY}&i=${id}&plot=full`)
     const res = await fetch('/api/movie', {
       method: 'POST',
       body: JSON.stringify({
         id
       })
     })
-    const movie = await res.json()
-    store.state.movie = movie
+    store.state.movie = await res.json()
   } catch (error) {
-    console.log('searchMovieDetails error:', error)
-  } finally {
-    store.state.loading = false
+    console.log('getMovieDetails error:', error)
   }
 }

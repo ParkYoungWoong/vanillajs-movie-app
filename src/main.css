@@ -1,21 +1,39 @@
 /* Common */
 html {
-  --color--black: #0E111B;
-  --color--white: #FFF;
-  --color--white-50: rgba(255,255,255,.5);
-  --color--white-30: rgba(255,255,255,.3);
-  --color--white-20: rgba(255,255,255,.2);
-  --color--white-10: rgba(255,255,255,.1);
-  --color--white-5: rgba(255,255,255,.05);
-  --color--primary: #FDC000;
-  --color--hover: #F86A05;
-  --color--area: #1C212E;
+  --color-black: #0E111B;
+  --color-white: #FFF;
+  --color-white-50: rgba(255,255,255,.5);
+  --color-white-30: rgba(255,255,255,.3);
+  --color-white-20: rgba(255,255,255,.2);
+  --color-white-10: rgba(255,255,255,.1);
+  --color-white-5: rgba(255,255,255,.05);
+  --color-primary: #FDC000;
+  --color-hover: #F86A05;
+  --color-area: #1C212E;
 }
 body {
-  background-color: var(--color--black);
+  background-color: var(--color-black);
   font-family: 'Roboto', sans-serif;
   line-height: 1.4;
-  color: var(--color--white);
+  color: var(--color-white);
+}
+
+
+/* Container */
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+@media (max-width: 1200px) {
+  .container {
+    padding: 40px;
+  }
+}
+@media (max-width: 600px) {
+  .container {
+    padding: 40px 20px;
+  }
 }
 
 
@@ -25,24 +43,24 @@ body {
   padding: 0 20px;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  background-color: var(--color--area);
-  font-weight: 700;
-  color: var(--color--white);
   outline: none;
-  transition: 0.3s;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-white);
+  background-color: var(--color-area);
+  cursor: pointer;
+  transition: .3s;
 }
 .btn:hover {
-  background-color: var(--color--hover);
+  background-color: var(--color-hover);
 }
 .btn-primary {
-  background-color: var(--color--primary);
-  color: var(--color--black);
+  background-color: var(--color-primary);
+  color: var(--color-black);
 }
 .btn-primary:hover {
-  background-color: var(--color--hover);
-  color: var(--color--white);
+  background-color: var(--color-hover);
+  color: var(--color-white);
 }
 
 
@@ -51,7 +69,7 @@ body {
   width: 30px;
   height: 30px;
   margin: 30px auto;
-  border: 4px solid var(--color--primary);
+  border: 4px solid var(--color-primary);
   border-top-color: transparent;
   border-radius: 50%;
   animation: loader 1s infinite linear;
@@ -70,22 +88,22 @@ body {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  background-color: var(--color--area);
+  background-color: var(--color-area);
 }
 .skeleton::after {
-  content: "";  
-  background-image: linear-gradient(270deg, 
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(270deg,
     rgba(255,255,255,0),
     rgba(255,255,255,.1),
     rgba(255,255,255,0)
   );
   transform: translateX(-100%);
   animation: skeleton-loader 2s infinite;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 @keyframes skeleton-loader {
   0% { transform: translateX(-100%); }
@@ -93,29 +111,10 @@ body {
 }
 
 
-/* Container */
-.container {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 40px 0;
-  position: relative;
-}
-@media (max-width: 1200px) {
-  .container {
-    padding: 40px 40px;
-  }
-}
-@media (max-width: 600px) {
-  .container {
-    padding: 40px 20px;
-  }
-}
-
-
 /* components/TheHeader */
 header {
   padding: 20px 40px;
-  background-color: rgba(14,17,27,0.9);
+  background-color: rgba(14,17,27,.9);
   position: sticky;
   top: 0;
   z-index: 9;
@@ -124,14 +123,13 @@ header {
   gap: 40px;
 }
 header .logo {
-  display: block;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   font-size: 20px;
-  color: var(--color--white-50);
+  color: var(--color-white-50);
   text-decoration: none;
 }
 header .logo span {
-  color: var(--color--primary);
+  color: var(--color-primary);
 }
 header nav ul {
   display: flex;
@@ -140,24 +138,24 @@ header nav ul {
 header nav ul li a {
   font-size: 14px;
   font-weight: 700;
-  color: var(--color--white-50);
+  color: var(--color-white-50);
   text-decoration: none;
 }
 header nav ul li a.active {
-  color: var(--color--primary);
+  color: var(--color-primary);
 }
 header .user {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: var(--color--area);
+  background-color: var(--color-area);
   cursor: pointer;
   position: absolute;
   top: 0;
   bottom: 0;
   right: 40px;
   margin: auto;
-  transition: 0.3s;
+  transition: .3s;
 }
 header .user:hover {
   transform: scale(1.2);
@@ -184,7 +182,7 @@ footer {
   text-align: center;
 }
 footer a {
-  color: var(--color--white-20);
+  color: var(--color-white-20);
   text-decoration: none;
 }
 footer a:hover {
@@ -197,16 +195,16 @@ footer a:hover {
   margin-bottom: 40px;
 }
 .headline h1 {
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   font-size: 80px;
   line-height: 1;
   margin-bottom: 40px;
 }
 .headline h1 span {
-  color: var(--color--primary);
+  color: var(--color-primary);
 }
 .headline p {
-  color: var(--color--white-30);
+  color: var(--color-white-30);
 }
 @media (max-width: 600px) {
   .headline h1 {
@@ -229,11 +227,11 @@ footer a:hover {
   border: none;
   outline: none;
   font-size: 14px;
-  color: var(--color--white);
-  background-color: var(--color--area);
+  color: var(--color-white);
+  background-color: var(--color-area);
 }
 .search input::placeholder {
-  color: var(--color--white-30);
+  color: var(--color-white-30);
 }
 .search .btn {
   flex-grow: 1;
@@ -245,10 +243,10 @@ footer a:hover {
 .movie-list {
   padding: 20px;
   border-radius: 4px;
-  background-color: var(--color--area);
+  background-color: var(--color-area);
 }
 .movie-list .message {
-  color: var(--color--primary);
+  color: var(--color-primary);
   font-size: 20px;
   text-align: center;
 }
@@ -260,25 +258,13 @@ footer a:hover {
 }
 
 
-/* components/MovieListMore */
-.view-more {
-  display: block;
-  max-width: 300px;
-  width: 100%;
-  margin: 20px auto;
-}
-.view-more.hide {
-  display: none;
-}
-
-
 /* components/MovieItem */
 .movies .movie {
   --width: 200px;
   width: var(--width);
   height: calc(var(--width) * 3 / 2);
   border-radius: 4px;
-  background-color: var(--color--black);
+  background-color: var(--color-black);
   background-size: cover;
   overflow: hidden;
   position: relative;
@@ -290,7 +276,7 @@ footer a:hover {
   bottom: 0;
   left: 0;
   right: 0;
-  border: 6px solid var(--color--primary);
+  border: 6px solid var(--color-primary);
 }
 .movies .movie .info {
   background-color: rgba(14,17,27,.3);
@@ -305,24 +291,30 @@ footer a:hover {
   bottom: 0;
 }
 .movies .movie .info .year {
-  color: var(--color--primary);
+  color: var(--color-primary);
 }
 .movies .movie .info .title {
-  color: var(--color--white);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  color: var(--color-white);
+}
+
+
+/* components/MovieListMore */
+.view-more {
+  width: 100%;
+  max-width: 300px;
+  margin: 20px auto;
+  display: block;
+}
+.view-more.hide {
+  display: none;
 }
 
 
 /* routes/Movie */
 .the-movie {
-  color: var(--color--white-50);
+  color: var(--color-white-50);
   display: flex;
   gap: 70px;
-}
-.the-movie .specs {
-  flex-grow: 1;
 }
 .the-movie .poster {
   flex-shrink: 0;
@@ -330,23 +322,24 @@ footer a:hover {
   width: var(--width);
   height: calc(var(--width) * 3 / 2);
   border-radius: 10px;
-  background-position: center;
   background-size: cover;
-  position: relative;
-  background-color: var(--color--area);
+  background-color: var(--color-area);
+}
+.the-movie .specs {
+  flex-grow: 1;
 }
 .the-movie .title {
   font-family: "Oswald", sans-serif;
   font-size: 70px;
   line-height: 1;
-  color: var(--color--white);
+  color: var(--color-white);
   margin-bottom: 30px;
 }
 .the-movie .title.skeleton {
   height: 70px;
 }
 .the-movie .labels {
-  color: var(--color--primary);
+  color: var(--color-primary);
   margin-bottom: 20px;
 }
 .the-movie .labels.skeleton {
@@ -359,10 +352,10 @@ footer a:hover {
 .the-movie h3 {
   font-family: "Oswald", sans-serif;
   font-size: 20px;
-  color: var(--color--white);
+  color: var(--color-white);
   margin: 24px 0 6px;
 }
-@media all and (max-width: 1200px) {
+@media (max-width: 1200px) {
   .the-movie {
     gap: 30px;
   }
@@ -370,7 +363,7 @@ footer a:hover {
     --width: 300px;
   }
 }
-@media all and (max-width: 720px) {
+@media (max-width: 720px) {
   .the-movie {
     display: block;
   }
@@ -385,12 +378,8 @@ footer a:hover {
   width: 230px;
   height: 230px;
   margin: 0 auto 20px;
-  border-radius: 50%;
-  background-color: var(--color--area);
-  overflow: hidden;
-}
-.about .photo img {
-  width: 100%;
+  border-radius: 10px;
+  background-size: cover;
 }
 .about .name {
   font-family: "Oswald", sans-serif;
@@ -403,7 +392,7 @@ footer a:hover {
   margin-bottom: 4px;
 }
 .about a {
-  color: var(--color--primary);
+  color: var(--color-primary);
   text-decoration: none;
 }
 .about a:hover {
@@ -415,6 +404,6 @@ footer a:hover {
 .not-found h1 {
   font-size: 70px;
   font-weight: 700;
-  color: var(--color--white-10);
+  color: var(--color-white-10);
   text-align: center;
 }

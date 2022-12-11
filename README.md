@@ -8,6 +8,13 @@ OMDb API를 활용해 VanillaJS 영화 검색 애플리케이션을 만들어봅
 
 ![Screenshot](/screenshots/screenshot_demo.JPG)
 
+### 프로젝트 시작하기
+
+```bash
+$ npm i
+$ npm run vercel
+```
+
 ### Reset.css
 
 브라우저의 기본 스타일을 초기화합니다.

@@ -1,24 +1,25 @@
 import { Component } from '../core/heropy'
 
-const menus = [
-  { 
-    name: 'Search', 
-    href: '#/'
-  },
-  { 
-    name: 'Movie', 
-    href: '#/movie?id=tt4520988'
-  },
-  {
-    name: 'About',
-    href: '#/about'
-  }
-]
-
 export default class TheHeader extends Component {
   constructor() {
     super({
-      tagName: 'header'
+      tagName: 'header',
+      state: {
+        menus: [
+          {
+            name: 'Search',
+            href: '#/'
+          },
+          {
+            name: 'Movie',
+            href: '#/movie?id=tt4520988'
+          },
+          {
+            name: 'About',
+            href: '#/about'
+          }
+        ]
+      }
     })
     window.addEventListener('popstate', () => {
       this.render()
@@ -33,7 +34,7 @@ export default class TheHeader extends Component {
       </a>
       <nav>
         <ul>
-          ${menus.map(menu => {
+          ${this.state.menus.map(menu => {
             const href = menu.href.split('?')[0]
             const hash = location.hash.split('?')[0]
             const isActive = href === hash

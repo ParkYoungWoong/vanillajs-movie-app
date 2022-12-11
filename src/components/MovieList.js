@@ -21,13 +21,13 @@ export default class MovieList extends Component {
     const moviesEl = this.el.querySelector('.movies')
     moviesEl?.append(
       ...movieStore.state.movies.map(movie => new MovieItem({
-        props: { movie }
+        movie
       }).el)
     )
 
     const loaderEl = this.el.querySelector('.the-loader')
     movieStore.state.loading
-      ? loaderEl?.classList.remove('hide')
-      : loaderEl?.classList.add('hide')
+      ? loaderEl.classList.remove('hide')
+      : loaderEl.classList.add('hide')
   }
 }
