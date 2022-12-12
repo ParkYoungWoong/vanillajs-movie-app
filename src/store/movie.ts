@@ -7,7 +7,7 @@ export interface SimpleMovie {
   Type: string
   Poster: string
 }
-export interface DetailedMovie {
+interface DetailedMovie {
   Title: string
   Year: string
   Rated: string
