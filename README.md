@@ -89,7 +89,7 @@ API Key 를 노출하지 않도록 서버리스 함수를 작성합니다.
 
 __/api/movie.ts__
 
-```js
+```ts
 import { VercelRequest, VercelResponse } from '@vercel/node'
 import fetch from 'node-fetch'
 
@@ -150,4 +150,29 @@ __/tsconfig.json__
     "api/**/*.ts"
   ]
 }
+```
+
+### JS 프로젝트가 없는 경우
+
+타입스크립트를 시작할 기존의 JS 프로젝트를 가지고 있지 않다면, 다음과 같이 진행하세요!  
+진행이 끝나면, 루트 경로에 `.env` 파일을 생성하고 `APIKEY` 환경변수를 지정해야 합니다!
+
+```bash
+# 원하는 터미널 경로에서 완성된 프로젝트를 클론합니다.
+$ git clone https://github.com/ParkYoungWoong/vanillajs-movie-app.git
+
+# 클론한 프로젝트 폴더로 이동합니다.
+$ cd vanillajs-movie-app
+
+# 브랜치를 변경합니다.
+$ git checkout typescript_starter
+
+# Git 버전 관리 내역을 초기화합니다.
+## macOS
+$ rm -rf .git
+## Windows
+$ rmdir /s /q .git
+
+# NPM 패키지를 설치합니다.
+$ npm i
 ```
