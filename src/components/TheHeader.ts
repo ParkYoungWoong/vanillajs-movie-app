@@ -10,7 +10,7 @@ interface Menu {
 }
 
 export default class TheHeader extends Component {
-  public state = {} as State
+  public state!: State
   constructor() {
     super({
       tagName: 'header',

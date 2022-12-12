@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default class MovieItem extends Component {
-  public props = {} as Props
+  public props!: Props
   constructor(props: Props) {
     super({
       props,
