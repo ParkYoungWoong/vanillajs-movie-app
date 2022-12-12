@@ -46,14 +46,12 @@ interface State {
   message: string
   loading: boolean
 }
-const movies: SimpleMovie[] = []
-const movie = {} as DetailedMovie
 const store = new Store<State>({
   searchText: '',
   page: 1,
   pageMax: 1,
-  movies,
-  movie,
+  movies: [],
+  movie: {} as DetailedMovie,
   loading: false,
   message: 'Search for the movie title!'
 })

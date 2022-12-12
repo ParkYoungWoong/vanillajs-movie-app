@@ -81,11 +81,11 @@ export function createRouter(routes: Routes) {
 
 
 ///// Store /////
-interface SubscribeCallback {
-  (arg: unknown): void
-}
 interface StoreObservers {
   [key: string]: SubscribeCallback[]
+}
+interface SubscribeCallback {
+  (arg: unknown): void
 }
 
 export class Store<S> {
