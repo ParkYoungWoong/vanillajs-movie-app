@@ -2,11 +2,10 @@ import { Component } from '../core/heropy'
 
 interface State {
   [key: string]: unknown
-  menus: Menu[]
-}
-interface Menu {
-  name: string
-  href: string
+  menus: {
+    name: string
+    href: string
+  }[]
 }
 
 export default class TheHeader extends Component {
