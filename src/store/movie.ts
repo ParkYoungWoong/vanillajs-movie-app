@@ -82,6 +82,7 @@ export const searchMovies = async (page: number) => {
       store.state.pageMax = Math.ceil(Number(totalResults) / 10)
     } else {
       store.state.message = Error
+      store.state.pageMax = 1
     }
   } catch (error) {
     console.log('searchMovies error:', error)
