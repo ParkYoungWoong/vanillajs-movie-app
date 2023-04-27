@@ -82,7 +82,7 @@ export const searchMovies = async (page: number) => {
       store.state.pageMax = Math.ceil(Number(totalResults) / 10)
     } else {
       store.state.message = Error
-      store.state.pageMax = 1
+      store.state.pageMax = 1 // 버그 수정을 위해 새롭게 추가된 코드!
     }
   } catch (error) {
     console.log('searchMovies error:', error)

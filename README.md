@@ -4,9 +4,44 @@ OMDb API를 활용해 VanillaJS 영화 검색 애플리케이션을 만들어봅
 이 프로젝트는 [JS 버전](https://github.com/ParkYoungWoong/vanillajs-movie-app/tree/js-only)과 [TS 버전](https://github.com/ParkYoungWoong/vanillajs-movie-app/tree/main)으로 나누어져 있습니다.  
 기본 버전은 TS입니다.
 
-[DEMO](https://vanilla-movie-5znvu8s4t-parkyoungwoong.vercel.app/#/)
+[DEMO](https://vanilla-movie-app.vercel.app/#/)
 
 ![Screenshot](/screenshots/screenshot_demo.JPG)
+
+### ❗공지사항❗
+
+__2023년 4월 27일__
+
+Vercel Serverless Functions가 정상적으로 동작하기 위해 `package.json` 파일의 `type` 옵션을 요구하게 되었습니다.  
+`package.json` 파일에 다음과 같이 `"type": "module"` 옵션을 추가하세요.
+
+```json
+{
+  // ...
+  "description": "",
+  "type": "module",
+  "scripts": {
+  // ...
+}
+```
+
+__2023년 4월 23일__
+
+영화 검색 후 'View More..' 버튼이 보일 때, 다른 영화를 새롭게 검색해서 결과를 출력할 수 없는 경우에 'View More..' 버튼이 사라지지 않는 버그가 있습니다.  
+이는 `pageMax` 상태를 초기화하지 않아서 발생하는 문제이기 때문에, 다음과 같이 `src/store/movie.ts` 파일의 `searchMovies` 함수 내용에서 해당 초기화 코드를 추가해야 합니다!
+
+```ts
+if (Response === 'True') { // 77번째 줄
+  store.state.movies = [
+    ...store.state.movies,
+    ...Search
+  ]
+  store.state.pageMax = Math.ceil(Number(totalResults) / 10)
+} else {
+  store.state.message = Error
+  store.state.pageMax = 1 // 85번째 줄, 버그 수정을 위해 새롭게 추가된 코드!
+}
+```
 
 ### 프로젝트 시작하기
 
