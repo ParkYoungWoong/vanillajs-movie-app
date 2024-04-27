@@ -92,7 +92,7 @@ export const searchMovies = async (page: number) => {
 }
 export const getMovieDetails = async (id: string) => {
   try {
-    // const res = await fetch(`https://omdbapi.com?apikey=${APIKEY}&i=${id}&plot=full`)
+    // const res = await fetch(`https://omdbapi.com?apikey=${OMDB_API_KEY}&i=${id}&plot=full`)
     const res = await fetch('/api/movie', {
       method: 'POST',
       body: JSON.stringify({
