@@ -20,9 +20,9 @@ export default class Chatbot extends Component {
                   <span class="material-symbols-outlined">smart_toy</span>
                 </div>`) : ''}
               ${typeof msg.content === 'string' 
-                ? msg.content?.replace(/{{(.*?)\/\/(.*?)}}/g, (match, p1, p2) => /* html */ `
+                ? (msg.content.replace(/{{(.*?)\/\/(.*?)}}/g, (match, p1, p2) => /* html */ `
                     <span class="movie-title" data-movie-title="${p2}">${p1}</span>
-                  `)
+                  `))
                 : ''}
             </li>
           `).join('')}
@@ -102,13 +102,13 @@ export default class Chatbot extends Component {
     // 영화 제목 선택 시, 검색!
     const movieTitleEls = this.el.querySelectorAll<HTMLElement>('.movie-title')
     movieTitleEls.forEach(movieTitleEl => {
-      movieTitleEl.addEventListener('click', async () => {
+      movieTitleEl.addEventListener('click', () => {
         const searchInputEl = document.querySelector<HTMLInputElement>('.search input')
         if (!searchInputEl) return
         const title = movieTitleEl.dataset.movieTitle || ''
         searchInputEl.value = title
         movieStore.state.searchText = title
-        await searchMovies(1)
+        searchMovies(1)
       })
     })
   }
