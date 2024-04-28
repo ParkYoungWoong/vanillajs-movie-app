@@ -17,10 +17,10 @@ const store = new Store<State>({
 
 export default store
 export const sendMessages = async () => {
-  console.log('sendMessages', store.state.chatText.trim())
   if (!store.state.chatText.trim()) return
   if (store.state.loading) return
   store.state.loading = true
+  // 데이터 갱신을 확인하기 위해서 `.push()`가 아닌 할당 연산자 사용!
   store.state.messages = [
     ...store.state.messages,
     { role: 'user', content: store.state.chatText }
@@ -33,13 +33,14 @@ export const sendMessages = async () => {
       })
     })
     const message = await res.json()
+    // 데이터 갱신을 확인하기 위해서 `.push()`가 아닌 할당 연산자 사용!
     store.state.messages = [
       ...store.state.messages,
       message
     ]
     store.state.chatText = ''
   } catch (error) {
-    console.log('sendChat error:', error)
+    console.log('sendMessages error:', error)
   } finally {
     store.state.loading = false
   }

@@ -470,7 +470,7 @@ footer a:hover {
 }
 .chatbot .chats li.assistant {
   align-self: flex-start;
-  border-radius: 4px 20px 20px 20px;
+  border-top-left-radius: 4px;
   background-color: var(--color-white-5);
   transform: translateX(10px);
 }

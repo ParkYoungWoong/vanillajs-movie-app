@@ -2,7 +2,7 @@ import { Component } from '../core/heropy'
 import chatStore, { sendMessages } from '../store/chatbot'
 import movieStore, { searchMovies } from '../store/movie'
 
-export default class Headline extends Component {
+export default class Chatbot extends Component {
   constructor() {
     super()
     chatStore.subscribe('messages', () => this.render())
@@ -20,7 +20,9 @@ export default class Headline extends Component {
                   <span class="material-symbols-outlined">smart_toy</span>
                 </div>`) : ''}
               ${typeof msg.content === 'string' 
-                ? msg.content?.replace(/{{(.*?)\/\/(.*?)}}/g, (match, p1, p2) => /* html */ `<span class="movie-title" data-movie-title="${p2}">${p1}</span>`)
+                ? msg.content?.replace(/{{(.*?)\/\/(.*?)}}/g, (match, p1, p2) => /* html */ `
+                    <span class="movie-title" data-movie-title="${p2}">${p1}</span>
+                  `)
                 : ''}
             </li>
           `).join('')}
@@ -46,11 +48,28 @@ export default class Headline extends Component {
       </div>
     `
 
-    const chatbotEl = this.el.querySelector('.chats')
-    chatbotEl?.addEventListener('click', (event: Event) => {
-      event.stopPropagation()
+    // 입력!
+    const inputEl = this.el.querySelector('input')
+    inputEl?.addEventListener('input', () => {
+      chatStore.state.chatText = inputEl.value
+    })
+    inputEl?.addEventListener('keydown', (event: Event) => {
+      if (
+        event instanceof KeyboardEvent && // 타입 카드
+        event.key === 'Enter' && // Enter 키
+        !event.isComposing // 한글 입력 완료
+      ) {
+        sendMessages()
+      }
     })
 
+    // 입력 제출!
+    const btnEl = this.el.querySelector('.input .btn')
+    btnEl?.addEventListener('click', () => {
+      sendMessages()
+    })
+
+    // 챗봇 시작!
     const chatStarterEl = this.el.querySelector('.chat-starter')
     chatStarterEl?.addEventListener('click', (event: Event) => {
       event.stopPropagation()
@@ -66,25 +85,21 @@ export default class Headline extends Component {
       }
     })
 
-    const inputEl = this.el.querySelector('input')
-    inputEl?.addEventListener('input', () => {
-      chatStore.state.chatText = inputEl.value
-    })
-    inputEl?.addEventListener('keydown', async (event: Event) => {
-      if (
-        event instanceof KeyboardEvent &&
-        event.key === 'Enter' &&
-        !event.isComposing
-      ) {
-        await sendMessages()
-      }
-    })
-    
-    const btnEl = this.el.querySelector('.input .btn')
-    btnEl?.addEventListener('click', async () => {
-      await sendMessages()
+    // 챗봇 영역 클릭 시, 팝업이 닫히지 않게!
+    const chatsEl = this.el.querySelector('.chats')
+    chatsEl?.addEventListener('click', (event: Event) => {
+      event.stopPropagation()
     })
 
+    // 가장 밑으로 스크롤
+    this.el.querySelector('.chats ul')?.scrollTo(
+      0, 
+      this.el.querySelector('.chats ul')?.scrollHeight || 0
+    )
+    // input에 포커스
+    inputEl?.focus()
+
+    // 영화 제목 선택 시, 검색!
     const movieTitleEls = this.el.querySelectorAll<HTMLElement>('.movie-title')
     movieTitleEls.forEach(movieTitleEl => {
       movieTitleEl.addEventListener('click', async () => {
@@ -96,13 +111,5 @@ export default class Headline extends Component {
         await searchMovies(1)
       })
     })
-
-    // 가장 밑으로 스크롤
-    this.el.querySelector('.chats ul')?.scrollTo(
-      0, 
-      this.el.querySelector('.chats ul')?.scrollHeight || 0
-    )
-    // input에 포커스
-    inputEl?.focus()
   }
 }
