@@ -20,8 +20,8 @@ export default class Chatbot extends Component {
                   <span class="material-symbols-outlined">smart_toy</span>
                 </div>`) : ''}
               ${typeof msg.content === 'string' 
-                ? (msg.content.replace(/{{(.*?)\/\/(.*?)}}/g, (match, p1, p2) => /* html */ `
-                    <span class="movie-title" data-movie-title="${p2}">${p1}</span>
+                ? (msg.content.replace(/{{(.*?)\/\/(.*?)}}/g, (match, ko, en) => /* html */ `
+                    <span class="movie-title" data-movie-title="${en}">${ko}</span>
                   `))
                 : ''}
             </li>
