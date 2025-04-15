@@ -4,7 +4,7 @@ OMDb API를 활용해 VanillaJS 영화 검색 애플리케이션을 만들어봅
 이 프로젝트는 ['JS' 버전](https://github.com/ParkYoungWoong/vanillajs-movie-app/tree/js-only)과 ['TS' 버전](https://github.com/ParkYoungWoong/vanillajs-movie-app/tree/main) 그리고 ['TS + AI 챗봇' 버전](https://github.com/ParkYoungWoong/vanillajs-movie-app/tree/openai)으로 나누어져 있습니다.  
 기본 버전은 'TS AI 챗봇'입니다.
 
-[DEMO](https://vanilla-movie-app.vercel.app/#/)
+[DEMO](https://vanillajs-movie-app-indol.vercel.app/#/)
 
 ![Screenshot](/screenshots/screenshot_demo2.png)
 
